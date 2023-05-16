@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUGAS PLATFORM JAVA SCRIPT</title>
+</head>
+
+<body>
+    <script>
+        var pil = [];
+        var button = "";
+        var teksPlhn = "";
+        var input = "";
+        
+        function tampilPil() {
+            var banyakPil = document.getElementById("banyakPil").value;
+            var pilihan = "";
+            button = '<button onclick="resultBtn()">SHOW</button>';
+
+            for (var i = 1; i <= banyakPil; i++) {
+                pilihan += '<p> Pilihan ' + i + ': <input type="text" id="input' + i + '" placeholder="Masukkan Teks Pilihan"> </p>';
+            }
+            pilihan += button;
+            document.getElementById("pilihan").innerHTML = pilihan;
+
+        }
+
+        function resultBtn() {
+            var banyakPil = document.getElementById("banyakPil").value;
+            var teksPil = "";
+
+            button = '<button onclick="result()">YA</button>';
+
+            for (var i = 1; i <= banyakPil; i++) {
+                pil[i - 1] = document.getElementById("input" + i).value;
+                input += pil[i - 1] + " , ";
+                teksPil += '<p><input type="radio" name="pilihan" value="' + pil[i - 1] + '"> ' + pil[i - 1] + '</p>';
+            }
+            teksPil += button;
+            document.getElementById("btnRadio").innerHTML = teksPil;
+        }
+
+        function result() {
+            //document.getElementById("frm1").submit();
+            var nama = document.getElementById("nama").value;
+            banyakPil = document.getElementById("banyakPil").value;
+            let pil
+            var radio = document.getElementsByName("pilihan");
+            for (let i = 0; i < radio.length; i++) {
+                if (radio[i].checked) {
+                    teskPlhn = radio[i].value;
+                    pil = teskPlhn
+                }
+            }
+
+            var hasil = 'Halo Semua, Namaku ' + nama + '. Aku Mempunyai Pilihan Sebanyak ' + banyakPil + ' Yaitu ' 
+            + input + ' Dan Saya Memilih Pilihan ' + pil + '.'
+
+            document.getElementById("HasilAkhir").innerHTML = hasil;
+        }
+    </script>
+
+    <pre>
+        <h1>
+          NAMA : Yohanes Salvatoris Nostri
+          NIM  : 215314072
+        </h1>
+    </pre>
+    <h2> Tugas Yang Di Kerjakan : </h2>
+
+    <label for="nama">NAMA : </label>
+    <input type="text" id="nama" placeholder="
+    Masukkan Nama">
+    <br>
+    <p>
+
+    </p>
+    <label for="banyakPil">JUMLAH PILIHAN :</label>
+    <input type="number" id="banyakPil" placeholder="Masukkan Jumlah Pilihan">
+    <br>
+    <p>
+
+    </p>
+    <button onclick="tampilPil()">OK</button>
+    <div id="pilihan"></div>
+
+    <div id="btnRadio"></div>
+
+    <div id="HasilAkhir"></div>
+</body>
+
+</html>
